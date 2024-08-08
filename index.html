@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Even / Odd</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onload="startGame()">
+  <script>
+    let playerName = "";
+    let wins = 0;
+    let losses = 0;
+
+    // Function to start the game
+    function startGame() {
+      playerName = prompt("Enter your name:");
+      if (!playerName) {
+        alert("Name cannot be empty. Please press F5 to start again.");
+      } else {
+        playRound();
+      }
+    }
+
+    // Function to play
+    function playRound() {
+      let playerChoice = prompt(`${playerName}, do you choose even or odd?`).toLowerCase();
+      if (playerChoice !== "even" && playerChoice !== "odd") {
+        alert("Invalid input. Please enter 'even' or 'odd'. Please press F5 to start again.");
+        return;
+      }
+
+      let num1 = Math.floor(Math.random() * 4) + 1;
+      let num2 = Math.floor(Math.random() * 4) + 1;
+      let sum = num1 + num2;
+      // if sum % 2 equals to 0 returns even, else returns odd
+      let result = (sum % 2 === 0) ? "even" : "odd";
+      let playerWins = (result === playerChoice);
+
+      // Display the results
+      if (playerWins) {
+        wins++;
+        alert(`${playerName}, you chose ${playerChoice}, the sum was ${sum}, which is an ${result} number, you win!\nThat's ${wins} wins and ${losses} losses!\nWould you like to play again?`);
+      } else {
+        losses++;
+        alert(`${playerName}, you chose ${playerChoice}, the sum was ${sum}, which is an ${result} number, you lose!\nThat's ${wins} wins and ${losses} losses!\nWould you like to play again?`);
+      }
+
+      // Ask the player if they want to play again
+      let playAgain = prompt("Would you like to play again? y/n").toLowerCase();
+      if (playAgain === "y") {
+        playRound();
+      } else {
+        alert(`Thanks for playing, ${playerName}! You had ${wins} wins and ${losses} losses.`);
+      }
+    }
+  </script>
+</body>
+
+</html>
