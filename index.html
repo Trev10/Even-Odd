@@ -20,7 +20,7 @@
     function startGame() {
       playerName = prompt("Enter your name:");
       if (!playerName) {
-        alert("Name cannot be empty. Please press F5 to start again.");
+        alert("Name cannot be empty. Please click on Start Game button to start again.");
       } else {
         playRound();
       }
@@ -30,7 +30,7 @@
     function playRound() {
       let playerChoice = prompt(`${playerName}, do you choose even or odd?`).toLowerCase();
       if (playerChoice !== "even" && playerChoice !== "odd") {
-        alert("Invalid input. Please enter 'even' or 'odd'. Please press F5 to start again.");
+        alert("Invalid input. Please enter 'even' or 'odd'. Please click on Start Game button to start again.");
         return;
       }
 
